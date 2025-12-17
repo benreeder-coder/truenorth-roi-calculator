@@ -120,13 +120,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-3 md:px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div className="sm:col-span-2 md:col-span-1">
-              <Image
-                src="/logo.png"
-                alt="True North PMP Consulting"
-                width={180}
-                height={40}
-                className="h-6 md:h-8 w-auto brightness-0 invert mb-3 md:mb-4"
-              />
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <Compass className="w-6 h-6 md:w-8 md:h-8 text-[var(--gold-500)]" />
+                <span className="text-base md:text-lg font-bold">True North PMP</span>
+              </div>
               <p className="text-white/70 text-xs md:text-sm">
                 Guiding organizations to project management excellence since 2010.
               </p>
