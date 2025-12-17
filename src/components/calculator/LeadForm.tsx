@@ -105,24 +105,23 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Value Proposition */}
-      <div className="text-center p-6 bg-gradient-to-br from-[var(--navy-700)] to-[var(--navy-900)] rounded-xl text-white animate-fadeInUp">
-        <FileText className="w-12 h-12 mx-auto mb-4 opacity-80" />
-        <h3 className="text-2xl font-bold mb-2 font-[var(--font-display)]">
+      <div className="text-center p-4 md:p-6 bg-gradient-to-br from-[var(--navy-700)] to-[var(--navy-900)] rounded-xl text-white animate-fadeInUp">
+        <FileText className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-3 md:mb-4 opacity-80" />
+        <h3 className="text-xl md:text-2xl font-bold mb-2 font-[var(--font-display)]">
           Get Your Full ROI Report
         </h3>
-        <p className="text-white/80 max-w-md mx-auto">
-          Download a professionally formatted PDF with your complete analysis,
-          savings projections, and actionable recommendations.
+        <p className="text-sm md:text-base text-white/80 max-w-md mx-auto">
+          Download a professionally formatted PDF with your complete analysis and savings projections.
         </p>
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="grid sm:grid-cols-2 gap-5">
+      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
           <div className="animate-fadeInUp stagger-1">
-            <Label htmlFor="firstName" className="flex items-center gap-2 mb-2">
+            <Label htmlFor="firstName" className="flex items-center gap-2 mb-1.5 md:mb-2 text-sm md:text-base">
               <User className="w-4 h-4 text-[var(--gray-500)]" />
               First Name
             </Label>
@@ -132,15 +131,15 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
               value={formData.firstName}
               onChange={(e) => handleInputChange('firstName', e.target.value)}
               placeholder="John"
-              className={errors.firstName ? 'border-red-500' : ''}
+              className={`text-base ${errors.firstName ? 'border-red-500' : ''}`}
             />
             {errors.firstName && (
-              <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+              <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
             )}
           </div>
 
           <div className="animate-fadeInUp stagger-2">
-            <Label htmlFor="email" className="flex items-center gap-2 mb-2">
+            <Label htmlFor="email" className="flex items-center gap-2 mb-1.5 md:mb-2 text-sm md:text-base">
               <Mail className="w-4 h-4 text-[var(--gray-500)]" />
               Email Address
             </Label>
@@ -150,15 +149,15 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
               placeholder="john@company.com"
-              className={errors.email ? 'border-red-500' : ''}
+              className={`text-base ${errors.email ? 'border-red-500' : ''}`}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
             )}
           </div>
 
           <div className="animate-fadeInUp stagger-3">
-            <Label htmlFor="company" className="flex items-center gap-2 mb-2">
+            <Label htmlFor="company" className="flex items-center gap-2 mb-1.5 md:mb-2 text-sm md:text-base">
               <Building2 className="w-4 h-4 text-[var(--gray-500)]" />
               Company
             </Label>
@@ -168,15 +167,15 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
               value={formData.company}
               onChange={(e) => handleInputChange('company', e.target.value)}
               placeholder="Acme Inc."
-              className={errors.company ? 'border-red-500' : ''}
+              className={`text-base ${errors.company ? 'border-red-500' : ''}`}
             />
             {errors.company && (
-              <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+              <p className="text-red-500 text-xs mt-1">{errors.company}</p>
             )}
           </div>
 
           <div className="animate-fadeInUp stagger-4">
-            <Label htmlFor="role" className="flex items-center gap-2 mb-2">
+            <Label htmlFor="role" className="flex items-center gap-2 mb-1.5 md:mb-2 text-sm md:text-base">
               <Briefcase className="w-4 h-4 text-[var(--gray-500)]" />
               Your Role
             </Label>
@@ -186,24 +185,24 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
               value={formData.role}
               onChange={(e) => handleInputChange('role', e.target.value)}
               placeholder="Project Manager"
-              className={errors.role ? 'border-red-500' : ''}
+              className={`text-base ${errors.role ? 'border-red-500' : ''}`}
             />
             {errors.role && (
-              <p className="text-red-500 text-sm mt-1">{errors.role}</p>
+              <p className="text-red-500 text-xs mt-1">{errors.role}</p>
             )}
           </div>
         </div>
 
         {submitError && (
-          <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
+          <div className="p-2.5 md:p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs md:text-sm">
             {submitError}
           </div>
         )}
 
         <Button
           type="submit"
-          size="xl"
-          className="w-full"
+          size="lg"
+          className="w-full text-base"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -221,30 +220,29 @@ export function LeadForm({ results, onSuccess }: LeadFormProps) {
 
         <p className="text-xs text-center text-[var(--gray-600)]">
           By submitting, you agree to receive communications from True North PMP Consulting.
-          We respect your privacy and will never share your information.
         </p>
       </form>
 
       {/* Contact Info */}
-      <div className="mt-8 p-5 bg-[var(--gray-100)] rounded-xl animate-fadeInUp stagger-5">
-        <h4 className="font-semibold text-[var(--navy-900)] mb-3">
+      <div className="mt-4 md:mt-8 p-4 md:p-5 bg-[var(--gray-100)] rounded-xl animate-fadeInUp stagger-5">
+        <h4 className="font-semibold text-[var(--navy-900)] mb-2 md:mb-3 text-sm md:text-base">
           Ready to Schedule a Consultation?
         </h4>
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2 text-xs md:text-sm">
           <a
             href="https://truenorthpmpconsulting.com/free-consultation"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-[var(--navy-700)] hover:text-[var(--navy-900)] transition-colors"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4 flex-shrink-0" />
             Schedule a Free Consultation
           </a>
           <a
             href="mailto:richard@truenorthpmp.com"
             className="flex items-center gap-2 text-[var(--navy-700)] hover:text-[var(--navy-900)] transition-colors"
           >
-            <Mail className="w-4 h-4" />
+            <Mail className="w-4 h-4 flex-shrink-0" />
             richard@truenorthpmp.com
           </a>
         </div>

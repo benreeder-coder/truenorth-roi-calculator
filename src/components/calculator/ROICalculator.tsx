@@ -120,7 +120,7 @@ export function ROICalculator() {
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Progress Stepper */}
-      <div className="mb-8">
+      <div className="mb-6 md:mb-8">
         <div className="flex items-center justify-between">
           {steps.map((step, index) => {
             const StepIcon = step.icon
@@ -135,13 +135,13 @@ export function ROICalculator() {
                   onClick={() => isClickable && setCurrentStep(step.id)}
                   disabled={!isClickable}
                   className={`
-                    flex flex-col items-center gap-2 group transition-all duration-300
+                    flex flex-col items-center gap-1 md:gap-2 group transition-all duration-300
                     ${isClickable ? 'cursor-pointer' : 'cursor-not-allowed'}
                   `}
                 >
                   <div
                     className={`
-                      w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300
+                      w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300
                       ${isActive
                         ? 'bg-[var(--navy-700)] text-white scale-110 shadow-lg'
                         : isCompleted
@@ -152,14 +152,14 @@ export function ROICalculator() {
                     `}
                   >
                     {isCompleted ? (
-                      <Check className="w-5 h-5" />
+                      <Check className="w-4 h-4 md:w-5 md:h-5" />
                     ) : (
-                      <StepIcon className="w-5 h-5" />
+                      <StepIcon className="w-4 h-4 md:w-5 md:h-5" />
                     )}
                   </div>
                   <span
                     className={`
-                      text-sm font-medium transition-colors
+                      text-xs md:text-sm font-medium transition-colors
                       ${isActive ? 'text-[var(--navy-700)]' : 'text-[var(--gray-500)]'}
                     `}
                   >
@@ -169,7 +169,7 @@ export function ROICalculator() {
 
                 {/* Connector Line */}
                 {index < steps.length - 1 && (
-                  <div className="flex-1 h-0.5 mx-4 bg-[var(--gray-200)] relative">
+                  <div className="flex-1 h-0.5 mx-2 md:mx-4 bg-[var(--gray-200)] relative">
                     <div
                       className="absolute inset-y-0 left-0 bg-[var(--navy-700)] transition-all duration-500"
                       style={{
@@ -185,7 +185,7 @@ export function ROICalculator() {
       </div>
 
       {/* Step Content */}
-      <div className="bg-white rounded-2xl card-shadow-lg p-6 md:p-8 min-h-[500px]">
+      <div className="bg-white rounded-xl md:rounded-2xl card-shadow-lg p-4 md:p-6 lg:p-8 min-h-[400px] md:min-h-[500px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
@@ -196,13 +196,12 @@ export function ROICalculator() {
           >
             {currentStep === 'inputs' && (
               <div>
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
+                <div className="mb-4 md:mb-6">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
                     Calculate Your Project Management ROI
                   </h2>
-                  <p className="text-[var(--gray-600)] mt-2">
-                    Enter your project data to discover how much you could save by improving your
-                    project management processes.
+                  <p className="text-sm md:text-base text-[var(--gray-600)] mt-2">
+                    Enter your project data to discover how much you could save.
                   </p>
                 </div>
                 <InputForm
@@ -216,12 +215,12 @@ export function ROICalculator() {
 
             {currentStep === 'results' && results && (
               <div>
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
+                <div className="mb-4 md:mb-6">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
                     Your ROI Analysis
                   </h2>
-                  <p className="text-[var(--gray-600)] mt-2">
-                    Based on your inputs, here&apos;s what process improvement could mean for your organization.
+                  <p className="text-sm md:text-base text-[var(--gray-600)] mt-2">
+                    Based on your inputs, here&apos;s what process improvement could mean for you.
                   </p>
                 </div>
                 <Results results={results} />
@@ -230,46 +229,45 @@ export function ROICalculator() {
 
             {currentStep === 'report' && results && (
               <div>
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
+                <div className="mb-4 md:mb-6">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[var(--navy-900)] font-[var(--font-display)]">
                     {reportDownloaded ? 'Thank You!' : 'Get Your Full Report'}
                   </h2>
-                  <p className="text-[var(--gray-600)] mt-2">
+                  <p className="text-sm md:text-base text-[var(--gray-600)] mt-2">
                     {reportDownloaded
                       ? 'Your report is downloading. Our team will be in touch soon.'
-                      : 'Enter your details to receive a professional PDF report with your complete analysis.'}
+                      : 'Enter your details for a professional PDF report.'}
                   </p>
                 </div>
 
                 {reportDownloaded ? (
-                  <div className="space-y-6 animate-fadeInUp">
-                    <div className="text-center p-8 bg-[var(--savings)]/10 rounded-xl border border-[var(--savings)]/20">
-                      <div className="w-16 h-16 bg-[var(--savings)] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Check className="w-8 h-8 text-white" />
+                  <div className="space-y-4 md:space-y-6 animate-fadeInUp">
+                    <div className="text-center p-4 md:p-8 bg-[var(--savings)]/10 rounded-xl border border-[var(--savings)]/20">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--savings)] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <Check className="w-6 h-6 md:w-8 md:h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold text-[var(--navy-900)] mb-2">
+                      <h3 className="text-lg md:text-xl font-semibold text-[var(--navy-900)] mb-2">
                         Report Downloaded Successfully
                       </h3>
-                      <p className="text-[var(--gray-600)]">
+                      <p className="text-sm md:text-base text-[var(--gray-600)]">
                         Check your downloads folder for your personalized ROI analysis.
                       </p>
                     </div>
 
                     {/* CTA Section */}
-                    <div className="bg-gradient-to-br from-[var(--navy-700)] to-[var(--navy-900)] rounded-xl p-6 text-white">
-                      <h4 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h4>
-                      <p className="text-white/80 mb-4">
-                        Schedule a free consultation to discuss how our Project Management Process Audit
-                        can help you achieve these savings.
+                    <div className="bg-gradient-to-br from-[var(--navy-700)] to-[var(--navy-900)] rounded-xl p-4 md:p-6 text-white">
+                      <h4 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Ready to Take the Next Step?</h4>
+                      <p className="text-sm md:text-base text-white/80 mb-3 md:mb-4">
+                        Schedule a free consultation to discuss how our audit can help you achieve these savings.
                       </p>
-                      <div className="flex flex-col sm:flex-row gap-3">
-                        <Button variant="gold" size="lg" className="flex-1" asChild>
+                      <div className="flex flex-col gap-2 md:gap-3">
+                        <Button variant="gold" size="lg" className="w-full" asChild>
                           <a href="https://truenorthpmpconsulting.com/free-consultation" target="_blank" rel="noopener noreferrer">
                             <Phone className="w-4 h-4 mr-2" />
                             Schedule Consultation
                           </a>
                         </Button>
-                        <Button variant="outline" size="lg" className="flex-1 border-white text-white hover:bg-white hover:text-[var(--navy-900)]" asChild>
+                        <Button variant="outline" size="lg" className="w-full border-white text-white hover:bg-white hover:text-[var(--navy-900)]" asChild>
                           <a href="mailto:richard@truenorthpmp.com">
                             <Mail className="w-4 h-4 mr-2" />
                             Email Richard
@@ -279,7 +277,7 @@ export function ROICalculator() {
                     </div>
 
                     <div className="text-center">
-                      <Button variant="ghost" onClick={handleReset}>
+                      <Button variant="ghost" onClick={handleReset} size="sm">
                         <RotateCcw className="w-4 h-4 mr-2" />
                         Start a New Calculation
                       </Button>
@@ -295,44 +293,45 @@ export function ROICalculator() {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="mt-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="mt-4 md:mt-6 flex items-center justify-between">
+        <div className="flex items-center gap-1 md:gap-2">
           {currentStep !== 'inputs' && (
-            <Button variant="ghost" onClick={handleBack}>
-              <ChevronLeft className="w-4 h-4 mr-1" />
-              Back
+            <Button variant="ghost" onClick={handleBack} size="sm" className="text-sm">
+              <ChevronLeft className="w-4 h-4 mr-0.5 md:mr-1" />
+              <span className="hidden sm:inline">Back</span>
             </Button>
           )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" onClick={handleReset} title="Reset calculator">
+        <div className="flex items-center gap-1 md:gap-2">
+          <Button variant="ghost" onClick={handleReset} title="Reset calculator" size="sm">
             <RotateCcw className="w-4 h-4" />
-            <span className="sr-only sm:not-sr-only sm:ml-2">Reset</span>
+            <span className="sr-only sm:not-sr-only sm:ml-1 md:ml-2">Reset</span>
           </Button>
 
           <Button
             variant="ghost"
             onClick={handleShare}
             title={copied ? 'Copied!' : 'Copy shareable link'}
+            size="sm"
           >
             {copied ? (
               <>
                 <Check className="w-4 h-4 text-[var(--savings)]" />
-                <span className="sr-only sm:not-sr-only sm:ml-2 text-[var(--savings)]">Copied!</span>
+                <span className="sr-only sm:not-sr-only sm:ml-1 md:ml-2 text-[var(--savings)]">Copied!</span>
               </>
             ) : (
               <>
-                <Share2 className="w-4 h-4" />
-                <span className="sr-only sm:not-sr-only sm:ml-2">Share</span>
+                <Copy className="w-4 h-4" />
+                <span className="sr-only sm:not-sr-only sm:ml-1 md:ml-2">Share</span>
               </>
             )}
           </Button>
 
           {currentStep !== 'report' && (
-            <Button onClick={handleNext} disabled={!results}>
+            <Button onClick={handleNext} disabled={!results} size="sm" className="text-sm">
               {currentStep === 'inputs' ? 'See Results' : 'Get Report'}
-              <ChevronRight className="w-4 h-4 ml-1" />
+              <ChevronRight className="w-4 h-4 ml-0.5 md:ml-1" />
             </Button>
           )}
         </div>

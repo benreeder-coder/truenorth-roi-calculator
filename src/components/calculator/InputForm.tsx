@@ -40,35 +40,35 @@ export function InputForm({
 
   return (
     <TooltipProvider delayDuration={300}>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         {/* Mode Toggle */}
-        <div className="flex items-center justify-between p-4 bg-[var(--gray-100)] rounded-lg border border-[var(--gray-200)]">
-          <div>
-            <span className="font-semibold text-[var(--navy-800)]">Quick Estimate</span>
-            <p className="text-sm text-[var(--gray-600)]">
-              {advancedMode ? 'Switch to quick mode for faster estimates' : '6 inputs, under 60 seconds'}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 bg-[var(--gray-100)] rounded-lg border border-[var(--gray-200)] gap-3">
+          <div className="flex-1">
+            <span className="font-semibold text-[var(--navy-800)] text-sm md:text-base">Quick Estimate</span>
+            <p className="text-xs md:text-sm text-[var(--gray-600)]">
+              {advancedMode ? 'Switch to quick mode' : '6 inputs, under 60 seconds'}
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 self-end sm:self-auto">
             <Switch
               checked={advancedMode}
               onCheckedChange={onAdvancedModeChange}
               aria-label="Toggle advanced mode"
             />
-            <span className="font-semibold text-[var(--navy-800)]">Advanced</span>
+            <span className="font-semibold text-[var(--navy-800)] text-sm md:text-base">Advanced</span>
           </div>
         </div>
 
         {/* Input Fields */}
-        <div className="grid gap-5">
+        <div className="grid gap-4 md:gap-5">
           {visibleFields.map((field, index) => (
             <div
               key={field.key}
               className="animate-fadeInUp opacity-0"
               style={{ animationDelay: `${index * 0.05}s`, animationFillMode: 'forwards' }}
             >
-              <div className="flex items-center gap-2 mb-2">
-                <Label htmlFor={field.key} className="flex-1">
+              <div className="flex items-center gap-2 mb-1.5 md:mb-2">
+                <Label htmlFor={field.key} className="flex-1 text-sm md:text-base">
                   {field.label}
                 </Label>
                 <Tooltip>
@@ -97,18 +97,17 @@ export function InputForm({
                 prefix={field.prefix || undefined}
                 suffix={field.suffix || undefined}
                 placeholder={`e.g., ${defaultInputs[field.key]}`}
-                className="text-right"
+                className="text-right text-base"
               />
             </div>
           ))}
         </div>
 
         {/* Disclaimers */}
-        <div className="mt-6 p-4 bg-[var(--parchment)] rounded-lg border border-[var(--gray-300)]">
+        <div className="mt-4 md:mt-6 p-3 md:p-4 bg-[var(--parchment)] rounded-lg border border-[var(--gray-300)]">
           <p className="text-xs text-[var(--gray-600)] leading-relaxed">
             <strong>Disclaimer:</strong> This calculator provides estimates based on the inputs you provide.
-            Results are for informational purposes only and should not be considered financial advice.
-            Actual savings may vary based on your specific circumstances.
+            Results are for informational purposes only. Actual savings may vary.
           </p>
         </div>
       </div>
